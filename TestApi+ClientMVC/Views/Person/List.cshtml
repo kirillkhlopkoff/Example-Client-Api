@@ -1,0 +1,42 @@
+﻿@using TestApi_Client.Model;
+@model IEnumerable<Person>
+
+@{
+    ViewData["Title"] = "All Persons";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="Create">Create New Person</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var person in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => person.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => person.Age)
+                </td>
+                <td>
+                    <a asp-controller="Person" asp-action="Delete" asp-route-id="@person.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
